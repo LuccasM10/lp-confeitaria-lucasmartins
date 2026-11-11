@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pé de Merengue · Bolos e tortas sob encomenda (página de exemplo)</title>
+<meta name="description" content="Página de exemplo criada por Lucas Martins: cardápio de bolos de festa, tortas e bolos no pote, com tamanhos, porções e pedido direto no WhatsApp.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#FFF7EC">
+<meta name="color-scheme" content="only light">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='20' fill='%23F4C9CF'/%3E%3Cpath d='M32 10c3 6-2 8 2 12 4 4 9 3 9 9 0 4-3 6-3 6 5 1 8 4 8 9 0 6-6 8-16 8s-16-2-16-8c0-5 3-8 8-9 0 0-3-2-3-6 0-6 5-6 8-10 3-4 1-7 3-11z' fill='%23FFF7EC' stroke='%23432B27' stroke-width='2.5'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/capa-naked-morango.webp">
+<style>
+  :root {
+    color-scheme: only light;
+    --creme: #FFF7EC; --manteiga: #F7E3B8; --rosa: #F4C9CF; --rosa-forte: #B5576B; --rosa-escuro: #96404F;
+    --pistache: #CFE0B6; --pistache-forte: #5E7F45; --cacau: #432B27; --cacau-suave: #6E5650;
+    --titulo: "Young Serif", Georgia, serif; --corpo: "Outfit", system-ui, sans-serif;
+  }
+  *,*::before,*::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--creme); color: var(--cacau); font: 400 1.0625rem/1.6 var(--corpo); overflow-x: clip; -webkit-font-smoothing: antialiased; }
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: inherit; }
+  h1,h2,h3 { font-family: var(--titulo); font-weight: 400; margin: 0; line-height: 1.1; text-wrap: balance; }
+  p { margin: 0; }
+  :focus-visible { outline: 3px solid var(--rosa-forte); outline-offset: 3px; border-radius: 6px; }
+  .wrap { width: 100%; max-width: 1160px; margin: 0 auto; padding: 0 18px; }
+  @media (min-width: 768px) { .wrap { padding: 0 36px; } }
+
+  .aviso { background: var(--cacau); color: var(--creme); font-size: .8125rem; text-align: center; padding: 8px 16px; }
+  .aviso a { color: var(--manteiga); font-weight: 700; }
+
+  .topo { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+  .logo { width: 230px; height: auto; color: var(--cacau); }
+
+  /* Capa dividida: texto + foto em gota */
+  .capa { display: grid; gap: 28px; padding-top: 12px; padding-bottom: 40px; align-items: center; }
+  @media (min-width: 900px) { .capa { grid-template-columns: 1.05fr .95fr; gap: 56px; padding-top: 30px; padding-bottom: 64px; } }
+  .etiqueta { display: inline-flex; align-items: center; gap: 8px; background: var(--pistache); color: #2F4423; font-weight: 600; font-size: .9375rem; padding: 6px 14px; border-radius: 999px; }
+  .capa h1 { font-size: clamp(2.5rem, 10vw, 4.6rem); margin: 18px 0 16px; }
+  .capa h1 span { color: var(--rosa-forte); }
+  .capa p { color: var(--cacau-suave); max-width: 40ch; font-size: 1.125rem; }
+  .capa-acoes { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 54px; padding: 14px 24px; border-radius: 16px; background: var(--rosa-forte); color: #fff; font-weight: 700; text-decoration: none; box-shadow: 0 6px 0 var(--rosa-escuro); transition: transform .15s, box-shadow .15s; }
+  .btn:hover { transform: translateY(2px); box-shadow: 0 4px 0 var(--rosa-escuro); }
+  .btn-claro { background: #fff; color: var(--cacau); box-shadow: 0 6px 0 var(--manteiga); border: 2px solid var(--manteiga); }
+  .btn-claro:hover { box-shadow: 0 4px 0 var(--manteiga); }
+  .capa-foto { position: relative; max-width: 460px; width: 100%; margin: 0 auto; }
+  .capa-foto img { width: 100%; aspect-ratio: 4 / 4.6; object-fit: cover; border-radius: 48% 52% 44% 56% / 38% 40% 60% 62%; border: 6px solid #fff; box-shadow: 0 30px 60px -30px rgba(67,43,39,.45); }
+  .capa-foto::before { content: ""; position: absolute; inset: -18px 0 auto auto; width: 120px; height: 120px; border-radius: 50%; background: var(--manteiga); z-index: -1; }
+  .capa-foto .balao { position: absolute; left: -6px; bottom: 18px; background: #fff; border-radius: 16px; padding: 10px 14px; box-shadow: 0 10px 24px -12px rgba(67,43,39,.4); font-size: .9375rem; }
+  .capa-foto .balao b { display: block; font-family: var(--titulo); font-weight: 400; color: var(--rosa-forte); font-size: 1.1rem; }
+
+  .onda { display: block; width: 100%; height: 22px; color: var(--rosa); }
+
+  .antecedencia { background: var(--rosa); }
+  .antecedencia .wrap { display: grid; gap: 10px; padding-top: 22px; padding-bottom: 22px; }
+  @media (min-width: 800px) { .antecedencia .wrap { grid-template-columns: auto 1fr 1fr; align-items: center; gap: 28px; } }
+  .antecedencia strong { font-family: var(--titulo); font-weight: 400; font-size: 1.4rem; }
+  .antecedencia p { font-size: 1rem; }
+  .antecedencia p b { color: var(--rosa-escuro); }
+
+  .cardapio { padding: 48px 0 20px; }
+  .cardapio > .wrap > h2 { font-size: clamp(2.1rem, 7vw, 3.2rem); }
+  .cardapio > .wrap > p { color: var(--cacau-suave); margin-top: 8px; }
+  .chips { position: sticky; top: 0; z-index: 20; background: rgba(255,247,236,.94); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); padding: 12px 0; margin: 18px 0 8px; display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
+  .chip { flex: none; min-height: 48px; padding: 0 18px; border-radius: 999px; border: 2px solid var(--manteiga); background: #fff; color: var(--cacau); font: 600 .9375rem var(--corpo); cursor: pointer; }
+  .chip.ativo { background: var(--cacau); border-color: var(--cacau); color: var(--creme); }
+
+  .bloco { padding-top: 26px; scroll-margin-top: 80px; }
+  .bloco[hidden] { display: none; }
+  .bloco h2 { font-size: 1.7rem; display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .bloco h2::after { content: ""; flex: 1; height: 2px; background: repeating-linear-gradient(90deg, var(--manteiga) 0 8px, transparent 8px 14px); }
+  .cards { display: grid; gap: 16px; }
+  @media (min-width: 700px) { .cards { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1040px) { .cards { grid-template-columns: repeat(3, 1fr); } .cards.dois { grid-template-columns: 1fr 1fr; max-width: 760px; } }
+  .card { background: #fff; border-radius: 24px; overflow: hidden; display: grid; grid-template-columns: 116px 1fr; box-shadow: 0 2px 0 var(--manteiga); border: 2px solid #F6ECDD; }
+  @media (min-width: 700px) { .card { grid-template-columns: 1fr; } }
+  .card img { width: 100%; height: 100%; object-fit: cover; }
+  @media (min-width: 700px) { .card img { aspect-ratio: 4 / 3; height: auto; } }
+  .card-txt { padding: 16px; display: flex; flex-direction: column; }
+  @media (min-width: 700px) { .card-txt { padding: 20px 22px 22px; } }
+  .card h3 { font-size: 1.3rem; }
+  .card p { color: var(--cacau-suave); font-size: .97rem; margin: 6px 0 12px; }
+  .tam { list-style: none; margin: auto 0 14px; padding: 0; display: grid; gap: 6px; }
+  .tam li { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; background: var(--creme); border-radius: 10px; padding: 6px 10px; font-size: .9375rem; }
+  .tam b { color: var(--rosa-escuro); white-space: nowrap; }
+  .pedir { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 10px 16px; border-radius: 14px; background: var(--pistache); color: #24361A; font-weight: 700; text-decoration: none; transition: background .2s; }
+  .pedir:hover { background: #BBD39C; }
+  .pedir svg { width: 20px; height: 20px; }
+
+  .encomendar { margin-top: 56px; background: var(--manteiga); padding: 52px 0; }
+  .encomendar h2 { font-size: clamp(2.1rem, 7vw, 3.2rem); text-align: center; }
+  .adesivos { list-style: none; margin: 30px 0 0; padding: 0; display: grid; gap: 14px; }
+  @media (min-width: 640px) { .adesivos { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1040px) { .adesivos { grid-template-columns: repeat(4, 1fr); } }
+  .adesivos li { background: #fff; border-radius: 22px; padding: 22px; transform: rotate(var(--r, 0deg)); box-shadow: 0 3px 0 rgba(67,43,39,.12); }
+  .adesivos li:nth-child(1) { --r: -1.2deg; } .adesivos li:nth-child(2) { --r: 1deg; } .adesivos li:nth-child(3) { --r: -.6deg; } .adesivos li:nth-child(4) { --r: 1.3deg; }
+  .adesivos .n { display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: var(--rosa); font-family: var(--titulo); font-size: 1.2rem; margin-bottom: 12px; }
+  .adesivos b { display: block; font-family: var(--titulo); font-weight: 400; font-size: 1.3rem; }
+  .adesivos span { color: var(--cacau-suave); font-size: 1rem; }
+  .encomendar .cta { text-align: center; margin-top: 30px; }
+
+  .rodape { padding: 36px 0 110px; text-align: center; font-size: .9375rem; color: var(--cacau-suave); }
+  .rodape .logo { margin: 0 auto 12px; }
+  .rodape p + p { margin-top: 6px; }
+  .rodape .exemplo { font-size: .8125rem; }
+
+  .flutuante { position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); z-index: 30; width: 60px; height: 60px; border-radius: 50%; display: grid; place-items: center; background: var(--rosa-forte); color: #fff; box-shadow: 0 10px 24px -8px rgba(67,43,39,.6); transition: opacity .3s, transform .3s; }
+  .flutuante.oculto { opacity: 0; transform: translateY(16px); pointer-events: none; }
+  .flutuante svg { width: 28px; height: 28px; }
+
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; } .adesivos li { transform: none; } }
+</style>
+</head>
+<body>
+<p class="aviso">Página de exemplo criada por Lucas Martins. <a href="https://confeitaria.lucasmartinsmkt.com.br/">Quero uma assim</a></p>
+
+<header class="wrap topo">
+  <a href="#inicio" aria-label="Pé de Merengue, início" style="text-decoration:none"><svg class="logo" viewBox="0 0 250 64" role="img" aria-label="Pé de Merengue, bolos e tortas">
+  <path d="M30 6c3 6-2 8 2 12 4 4 9 3 9 9 0 4-3 6-3 6 5 1 8 4 8 9 0 6-6 9-16 9s-16-3-16-9c0-5 3-8 8-9 0 0-3-2-3-6 0-6 5-6 8-10 3-4 1-7 3-11z" fill="#F7E3B8" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+  <path d="M22 33c4 2 12 2 16 0M20 42c6 3 18 3 24 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  <path d="M14 55h32" stroke="#B5576B" stroke-width="3" stroke-linecap="round"/>
+  <text x="58" y="37" textLength="186" lengthAdjust="spacingAndGlyphs" font-family="Young Serif, Georgia, serif" font-size="24" fill="currentColor">Pé de Merengue</text>
+  <text x="59" y="54" textLength="184" lengthAdjust="spacingAndGlyphs" font-family="Outfit, Arial, sans-serif" font-size="11" font-weight="600" fill="#B5576B">bolos &amp; tortas sob encomenda</text>
+</svg></a>
+</header>
+
+<main id="inicio">
+  <section class="wrap capa" aria-labelledby="titulo">
+    <div>
+      <span class="etiqueta">Bolos e tortas sob encomenda</span>
+      <h1 id="titulo">O bolo da sua festa, <span>do jeitinho que você imaginou.</span></h1>
+      <p>Bolos de aniversário, tortas e potes feitos na hora, com fruta fresca e chantilly de verdade. Escolha, toque em pedir e combine a data pelo WhatsApp.</p>
+      <div class="capa-acoes">
+        <a class="btn" href="https://wa.me/5531975732760?text=Oi%2C%20Lucas%21%20Vi%20o%20exemplo%20da%20P%C3%A9%20de%20Merengue%20e%20quero%20uma%20p%C3%A1gina%20assim%20para%20minha%20confeitaria." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.6 2 2.17 6.43 2.17 11.87c0 1.74.46 3.44 1.32 4.94L2.08 22l5.32-1.4a9.86 9.86 0 0 0 4.63 1.18h.01c5.44 0 9.87-4.43 9.87-9.87 0-2.64-1.03-5.12-2.86-7Zm-7.01 15.2h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.16.83.84-3.08-.2-.32a8.17 8.17 0 0 1-1.26-4.34c0-4.52 3.68-8.2 8.21-8.2a8.2 8.2 0 0 1 8.2 8.21c0 4.52-3.68 8.2-8.2 8.2Zm4.5-6.15c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.13-.16.25-.64.8-.78.96-.15.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.15-1.18-.07-.1-.23-.17-.48-.29Z"/></svg>Encomendar no WhatsApp</a>
+        <a class="btn btn-claro" href="#cardapio">Ver o cardápio</a>
+      </div>
+    </div>
+    <div class="capa-foto">
+      <img src="img/capa-naked-morango.webp" width="1200" height="1797" fetchpriority="high" alt="Naked cake de morango com chantilly e frutas vermelhas no topo">
+      <p class="balao"><b>Naked de Morango</b>com frutas vermelhas frescas</p>
+    </div>
+  </section>
+
+  <svg class="onda" viewBox="0 0 1200 22" preserveAspectRatio="none" aria-hidden="true"><path d="M0 22V11 Q 25 0 50 11 T 100 11 T 150 11 T 200 11 T 250 11 T 300 11 T 350 11 T 400 11 T 450 11 T 500 11 T 550 11 T 600 11 T 650 11 T 700 11 T 750 11 T 800 11 T 850 11 T 900 11 T 950 11 T 1000 11 T 1050 11 T 1100 11 T 1150 11 T 1200 11 V22Z" fill="currentColor"/></svg>
+  <section class="antecedencia" aria-label="Antecedência para encomendas">
+    <div class="wrap">
+      <strong>Antecedência mínima</strong>
+      <p><b>Bolos de festa:</b> peça com 3 dias de antecedência.</p>
+      <p><b>Tortas, potes e bolos do dia a dia:</b> 24 horas.</p>
+    </div>
+  </section>
+
+  <section class="cardapio" id="cardapio" aria-labelledby="t-cardapio">
+    <div class="wrap">
+      <h2 id="t-cardapio">Cardápio</h2>
+      <p>Tamanhos e porções em cada item. Cada botão já abre o pedido com o nome do doce.</p>
+      <div class="chips" role="toolbar" aria-label="Filtrar o cardápio"><button type="button" class="chip ativo" data-f="todos" aria-pressed="true">Todos</button><button type="button" class="chip" data-f="festa" aria-pressed="false">Bolos de festa</button><button type="button" class="chip" data-f="tortas" aria-pressed="false">Tortas</button><button type="button" class="chip" data-f="pote" aria-pressed="false">No pote</button><button type="button" class="chip" data-f="dia" aria-pressed="false">Do dia a dia</button></div>
+      
+      <section class="bloco" data-cat="festa" id="festa" aria-labelledby="t-festa">
+        <h2 id="t-festa">Bolos de festa</h2>
+        <div class="cards">
+          <article class="card">
+            <img src="img/naked-frutas-vermelhas.webp" width="700" height="1054" loading="lazy" alt="Naked cake com cobertura branca e framboesas frescas">
+            <div class="card-txt">
+              <h3>Naked de Frutas Vermelhas</h3>
+              <p>Massa de baunilha, creme de mascarpone e framboesas frescas por cima.</p>
+              <ul class="tam"><li><span>P · 10 fatias</span><b>R$ 149</b></li><li><span>M · 20 fatias</span><b>R$ 229</b></li></ul>
+              <a class="pedir" href="https://wa.me/5531975732760?text=Oi%2C%20Lucas%21%20Vi%20o%20exemplo%20da%20P%C3%A9%20de%20Merengue%20e%20quero%20uma%20p%C3%A1gina%20assim%20para%20minha%20confeitaria%20%28produto%3A%20Naked%20de%20Frutas%20Vermelhas%29." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.6 2 2.17 6.43 2.17 11.87c0 1.74.46 3.44 1.32 4.94L2.08 22l5.32-1.4a9.86 9.86 0 0 0 4.63 1.18h.01c5.44 0 9.87-4.43 9.87-9.87 0-2.64-1.03-5.12-2.86-7Zm-7.01 15.2h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.16.83.84-3.08-.2-.32a8.17 8.17 0 0 1-1.26-4.34c0-4.52 3.68-8.2 8.21-8.2a8.2 8.2 0 0 1 8.2 8.21c0 4.52-3.68 8.2-8.2 8.2Zm4.5-6.15c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.13-.16.25-.64.8-.78.96-.15.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.15-1.18-.07-.1-.23-.17-.48-.29Z"/></svg>Pedir este</a>
+            </div>
+          </article>
+          <article class="card">
+            <img src="img/bolo-morango-chantilly.webp" width="700" height="934" loading="lazy" alt="Bolo de morango com chantilly fatiado, mostrando as camadas">
+            <div class="card-txt">
+              <h3>Morango com Chantilly</h3>
+              <p>Pão de ló fofinho, chantilly de verdade e morango fresco em todas as camadas.</p>
+              <ul class="tam"><li><span>P · 10 fatias</span><b>R$ 139</b></li><li><span>M · 20 fatias</span><b>R$ 215</b></li></ul>
+              <a class="pedir" href="https://wa.me/5531975732760?text=Oi%2C%20Lucas%21%20Vi%20o%20exemplo%20da%20P%C3%A9%20de%20Merengue%20e%20quero%20uma%20p%C3%A1gina%20assim%20para%20minha%20confeitaria%20%28produto%3A%20Morango%20com%20Chantilly%29." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.6 2 2.17 6.43 2.17 11.87c0 1.74.46 3.44 1.32 4.94L2.08 22l5.32-1.4a9.86 9.86 0 0 0 4.63 1.18h.01c5.44 0 9.87-4.43 9.87-9.87 0-2.64-1.03-5.12-2.86-7Zm-7.01 15.2h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.16.83.84-3.08-.2-.32a8.17 8.17 0 0 1-1.26-4.34c0-4.52 3.68-8.2 8.21-8.2a8.2 8.2 0 0 1 8.2 8.21c0 4.52-3.68 8.2-8.2 8.2Zm4.5-6.15c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.13-.16.25-.64.8-.78.96-.15.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.15-1.18-.07-.1-.23-.17-.48-.29Z"/></svg>Pedir este</a>
+            </div>
+          </article>
+          <article class="card">
+            <img src="img/bolo-rosa-drip.webp" width="700" height="1050" loading="lazy" alt="Bolo alto cor-de-rosa com escorrido branco e morangos no topo">
+            <div class="card-txt">
+              <h3>Rosa de Aniversário</h3>
+              <p>Brigadeiro branco com morango, cobertura rosa e escorrido de chocolate branco.</p>
+              <ul class="tam"><li><span>M · 20 fatias</span><b>R$ 249</b></li><li><span>G · 35 fatias</span><b>R$ 389</b></li></ul>
+              <a class="pedir" href="https://wa.me/5531975732760?text=Oi%2C%20Lucas%21%20Vi%20o%20exemplo%20da%20P%C3%A9%20de%20Merengue%20e%20quero%20uma%20p%C3%A1gina%20assim%20para%20minha%20confeitaria%20%28produto%3A%20Rosa%20de%20Anivers%C3%A1rio%29." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.6 2 2.17 6.43 2.17 11.87c0 1.74.46 3.44 1.32 4.94L2.08 22l5.32-1.4a9.86 9.86 0 0 0 4.63 1.18h.01c5.44 0 9.87-4.43 9.87-9.87 0-2.64-1.03-5.12-2.86-7Zm-7.01 15.2h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.16.83.84-3.08-.2-.32a8.17 8.17 0 0 1-1.26-4.34c0-4.52 3.68-8.2 8.21-8.2a8.2 8.2 0 0 1 8.2 8.21c0 4.52-3.68 8.2-8.2 8.2Zm4.5-6.15c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.13-.16.25-.64.8-.78.96-.15.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.15-1.18-.07-.1-.23-.17-.48-.29Z"/></svg>Pedir este</a>
+            </div>
+          </article>
+          <article class="card">
+            <img src="img/bolo-branco-ganache.webp" width="700" height="542" loading="lazy" alt="Bolo branco com ganache de chocolate escorrendo pelas laterais">
+            <div class="card-txt">
+              <h3>Baunilha com Ganache</h3>
+              <p>Massa amanteigada de baunilha, recheio de brigadeiro e ganache escorrendo.</p>
+              <ul class="tam"><li><span>P · 10 fatias</span><b>R$ 129</b></li><li><span>M · 20 fatias</span><b>R$ 199</b></li></ul>
+              <a class="pedir" href="https://wa.me/5531975732760?text=Oi%2C%20Lucas%21%20Vi%20o%20exemplo%20da%20P%C3%A9%20de%20Merengue%20e%20quero%20uma%20p%C3%A1gina%20assim%20para%20minha%20confeitaria%20%28produto%3A%20Baunilha%20com%20Ganache%29." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.6 2 2.17 6.43 2.17 11.87c0 1.74.46 3.44 1.32 4.94L2.08 22l5.32-1.4a9.86 9.86 0 0 0 4.63 1.18h.01c5.44 0 9.87-4.43 9.87-9.87 0-2.64-1.03-5.12-2.86-7Zm-7.01 15.2h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.16.83.84-3.08-.2-.32a8.17 8.17 0 0 1-1.26-4.34c0-4.52 3.68-8.2 8.21-8.2a8.2 8.2 0 0 1 8.2 8.21c0 4.52-3.68 8.2-8.2 8.2Zm4.5-6.15c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.13-.16.25-.64.8-.78.96-.15.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.15-1.18-.07-.1-.23-.17-.48-.29Z"/></svg>Pedir este</a>
+            </div>
+          </article>
+          <article class="card">
+            <img src="img/carrot-cake.webp" width="700" height="1043" loading="lazy" alt="Fatia de bolo de cenoura em camadas com creme e nozes">
+            <div class="card-txt">
+              <h3>Carrot Cake com Nozes</h3>
+              <p>Bolo de cenoura com especiarias, nozes tostadas e cobertura de cream cheese.</p>
+              <ul class="tam"><li><span>P · 10 fatias</span><b>R$ 135</b></li><li><span>M · 20 fatias</span><b>R$ 209</b></li></ul>
+              <a class="pedir" href="https://wa.me/5531975732760?text=Oi%2C%20Lucas%21%20Vi%20o%20exemplo%20da%20P%C3%A9%20de%20Merengue%20e%20quero%20uma%20p%C3%A1gina%20assim%20para%20minha%20confeitaria%20%28produto%3A%20Carrot%20Cake%20com%20Nozes%29." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.6 2 2.17 6.43 2.17 11.87c0 1.74.46 3.44 1.32 4.94L2.08 22l5.32-1.4a9.86 9.86 0 0 0 4.63 1.18h.01c5.44 0 9.87-4.43 9.87-9.87 0-2.64-1.03-5.12-2.86-7Zm-7.01 15.2h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.16.83.84-3.08-.2-.32a8.17 8.17 0 0 1-1.26-4.34c0-4.52 3.68-8.2 8.21-8.2a8.2 8.2 0 0 1 8.2 8.21c0 4.52-3.68 8.2-8.2 8.2Zm4.5-6.15c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.13-.16.25-.64.8-.78.96-.15.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.15-1.18-.07-.1-.23-.17-.48-.29Z"/></svg>Pedir este</a>
+            </div>
+          </article>
+          <article class="card">
+            <img src="img/bolo-chocolate-trufado.webp" width="700" height="875" loading="lazy" alt="Fatia alta de bolo de chocolate trufado num prato branco">
+            <div class="card-txt">
+              <h3>Chocolate Trufado</h3>
+              <p>Massa úmida de cacau e três camadas de trufa meio amarga.</p>
+              <ul class="tam"><li><span>P · 10 fatias</span><b>R$ 145</b></li><li><span>M · 20 fatias</span><b>R$ 225</b></li></ul>
+              <a class="pedir" href="https://wa.me/5531975732760?text=Oi%2C%20Lucas%21%20Vi%20o%20exemplo%20da%20P%C3%A9%20de%20Merengue%20e%20quero%20uma%20p%C3%A1gina%20assim%20para%20minha%20confeitaria%20%28produto%3A%20Chocolate%20Trufado%29." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.6 2 2.17 6.43 2.17 11.87c0 1.74.46 3.44 1.32 4.94L2.08 22l5.32-1.4a9.86 9.86 0 0 0 4.63 1.18h.01c5.44 0 9.87-4.43 9.87-9.87 0-2.64-1.03-5.12-2.86-7Zm-7.01 15.2h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.16.83.84-3.08-.2-.32a8.17 8.17 0 0 1-1.26-4.34c0-4.52 3.68-8.2 8.21-8.2a8.2 8.2 0 0 1 8.2 8.21c0 4.52-3.68 8.2-8.2 8.2Zm4.5-6.15c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.13-.16.25-.64.8-.78.96-.15.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.15-1.18-.07-.1-.23-.17-.48-.29Z"/></svg>Pedir este</a>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="bloco" data-cat="tortas" id="tortas" aria-labelledby="t-tortas">
+        <h2 id="t-tortas">Tortas</h2>
+        <div class="cards">
+          <article class="card">
+            <img src="img/torta-limao-merengue.webp" width="700" height="822" loading="lazy" alt="Torta de limão coberta de merengue maçaricado em espiral">
+            <div class="card-txt">
+              <h3>Limão com Merengue</h3>
+              <p>Creme de limão-siciliano azedinho e merengue italiano maçaricado. A torta que deu nome à casa.</p>
+              <ul class="tam"><li><span>inteira · 12 fatias</span><b>R$ 119</b></li></ul>
+              <a class="pedir" href="https://wa.me/5531975732760?text=Oi%2C%20Lucas%21%20Vi%20o%20exemplo%20da%20P%C3%A9%20de%20Merengue%20e%20quero%20uma%20p%C3%A1gina%20assim%20para%20minha%20confeitaria%20%28produto%3A%20Lim%C3%A3o%20com%20Merengue%29." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.6 2 2.17 6.43 2.17 11.87c0 1.74.46 3.44 1.32 4.94L2.08 22l5.32-1.4a9.86 9.86 0 0 0 4.63 1.18h.01c5.44 0 9.87-4.43 9.87-9.87 0-2.64-1.03-5.12-2.86-7Zm-7.01 15.2h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.16.83.84-3.08-.2-.32a8.17 8.17 0 0 1-1.26-4.34c0-4.52 3.68-8.2 8.21-8.2a8.2 8.2 0 0 1 8.2 8.21c0 4.52-3.68 8.2-8.2 8.2Zm4.5-6.15c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.13-.16.25-.64.8-.78.96-.15.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.15-1.18-.07-.1-.23-.17-.48-.29Z"/></svg>Pedir este</a>
+            </div>
+          </article>
+          <article class="card">
+            <img src="img/cheesecake-morango.webp" width="700" height="642" loading="lazy" alt="Cheesecake inteiro coberto de geleia e morangos frescos">
+            <div class="card-txt">
+              <h3>Cheesecake de Morango</h3>
+              <p>Base de biscoito amanteigado, cream cheese assado e geleia de morango da casa.</p>
+              <ul class="tam"><li><span>inteira · 12 fatias</span><b>R$ 135</b></li></ul>
+              <a class="pedir" href="https://wa.me/5531975732760?text=Oi%2C%20Lucas%21%20Vi%20o%20exemplo%20da%20P%C3%A9%20de%20Merengue%20e%20quero%20uma%20p%C3%A1gina%20assim%20para%20minha%20confeitaria%20%28produto%3A%20Cheesecake%20de%20Morango%29." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.6 2 2.17 6.43 2.17 11.87c0 1.74.46 3.44 1.32 4.94L2.08 22l5.32-1.4a9.86 9.86 0 0 0 4.63 1.18h.01c5.44 0 9.87-4.43 9.87-9.87 0-2.64-1.03-5.12-2.86-7Zm-7.01 15.2h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.16.83.84-3.08-.2-.32a8.17 8.17 0 0 1-1.26-4.34c0-4.52 3.68-8.2 8.21-8.2a8.2 8.2 0 0 1 8.2 8.21c0 4.52-3.68 8.2-8.2 8.2Zm4.5-6.15c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.13-.16.25-.64.8-.78.96-.15.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.15-1.18-.07-.1-.23-.17-.48-.29Z"/></svg>Pedir este</a>
+            </div>
+          </article>
+          <article class="card">
+            <img src="img/torta-morango.webp" width="700" height="466" loading="lazy" alt="Torta coberta de morangos frescos brilhando">
+            <div class="card-txt">
+              <h3>Torta de Morango</h3>
+              <p>Massa crocante, creme de confeiteiro de baunilha e morangos frescos.</p>
+              <ul class="tam"><li><span>inteira · 12 fatias</span><b>R$ 109</b></li></ul>
+              <a class="pedir" href="https://wa.me/5531975732760?text=Oi%2C%20Lucas%21%20Vi%20o%20exemplo%20da%20P%C3%A9%20de%20Merengue%20e%20quero%20uma%20p%C3%A1gina%20assim%20para%20minha%20confeitaria%20%28produto%3A%20Torta%20de%20Morango%29." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.6 2 2.17 6.43 2.17 11.87c0 1.74.46 3.44 1.32 4.94L2.08 22l5.32-1.4a9.86 9.86 0 0 0 4.63 1.18h.01c5.44 0 9.87-4.43 9.87-9.87 0-2.64-1.03-5.12-2.86-7Zm-7.01 15.2h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.16.83.84-3.08-.2-.32a8.17 8.17 0 0 1-1.26-4.34c0-4.52 3.68-8.2 8.21-8.2a8.2 8.2 0 0 1 8.2 8.21c0 4.52-3.68 8.2-8.2 8.2Zm4.5-6.15c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.13-.16.25-.64.8-.78.96-.15.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.15-1.18-.07-.1-.23-.17-.48-.29Z"/></svg>Pedir este</a>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="bloco" data-cat="pote" id="pote" aria-labelledby="t-pote">
+        <h2 id="t-pote">No pote</h2>
+        <div class="cards dois">
+          <article class="card">
+            <img src="img/pote-chocolate.webp" width="700" height="1050" loading="lazy" alt="Potes de vidro com camadas de bolo de chocolate e creme">
+            <div class="card-txt">
+              <h3>Pote de Chocolate</h3>
+              <p>Bolo de cacau, brigadeiro cremoso e creme de chocolate. Pote de 250 ml.</p>
+              <ul class="tam"><li><span>unidade</span><b>R$ 16</b></li><li><span>kit com 6</span><b>R$ 88</b></li></ul>
+              <a class="pedir" href="https://wa.me/5531975732760?text=Oi%2C%20Lucas%21%20Vi%20o%20exemplo%20da%20P%C3%A9%20de%20Merengue%20e%20quero%20uma%20p%C3%A1gina%20assim%20para%20minha%20confeitaria%20%28produto%3A%20Pote%20de%20Chocolate%29." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.6 2 2.17 6.43 2.17 11.87c0 1.74.46 3.44 1.32 4.94L2.08 22l5.32-1.4a9.86 9.86 0 0 0 4.63 1.18h.01c5.44 0 9.87-4.43 9.87-9.87 0-2.64-1.03-5.12-2.86-7Zm-7.01 15.2h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.16.83.84-3.08-.2-.32a8.17 8.17 0 0 1-1.26-4.34c0-4.52 3.68-8.2 8.21-8.2a8.2 8.2 0 0 1 8.2 8.21c0 4.52-3.68 8.2-8.2 8.2Zm4.5-6.15c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.13-.16.25-.64.8-.78.96-.15.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.15-1.18-.07-.1-.23-.17-.48-.29Z"/></svg>Pedir este</a>
+            </div>
+          </article>
+          <article class="card">
+            <img src="img/pote-morango.webp" width="700" height="472" loading="lazy" alt="Copinhos com camadas de creme, bolo e morangos">
+            <div class="card-txt">
+              <h3>Pote de Morango</h3>
+              <p>Pão de ló, creme de baunilha e morango picado. Pote de 250 ml.</p>
+              <ul class="tam"><li><span>unidade</span><b>R$ 15</b></li><li><span>kit com 6</span><b>R$ 82</b></li></ul>
+              <a class="pedir" href="https://wa.me/5531975732760?text=Oi%2C%20Lucas%21%20Vi%20o%20exemplo%20da%20P%C3%A9%20de%20Merengue%20e%20quero%20uma%20p%C3%A1gina%20assim%20para%20minha%20confeitaria%20%28produto%3A%20Pote%20de%20Morango%29." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.6 2 2.17 6.43 2.17 11.87c0 1.74.46 3.44 1.32 4.94L2.08 22l5.32-1.4a9.86 9.86 0 0 0 4.63 1.18h.01c5.44 0 9.87-4.43 9.87-9.87 0-2.64-1.03-5.12-2.86-7Zm-7.01 15.2h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.16.83.84-3.08-.2-.32a8.17 8.17 0 0 1-1.26-4.34c0-4.52 3.68-8.2 8.21-8.2a8.2 8.2 0 0 1 8.2 8.21c0 4.52-3.68 8.2-8.2 8.2Zm4.5-6.15c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.13-.16.25-.64.8-.78.96-.15.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.15-1.18-.07-.1-.23-.17-.48-.29Z"/></svg>Pedir este</a>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="bloco" data-cat="dia" id="dia" aria-labelledby="t-dia">
+        <h2 id="t-dia">Do dia a dia</h2>
+        <div class="cards dois">
+          <article class="card">
+            <img src="img/bolo-laranja.webp" width="700" height="466" loading="lazy" alt="Bolo de laranja decorado com rodelas de laranja desidratada">
+            <div class="card-txt">
+              <h3>Laranja com Calda</h3>
+              <p>Bolo de laranja inteira batida, calda cítrica e rodelas desidratadas.</p>
+              <ul class="tam"><li><span>forma de 20 cm</span><b>R$ 59</b></li></ul>
+              <a class="pedir" href="https://wa.me/5531975732760?text=Oi%2C%20Lucas%21%20Vi%20o%20exemplo%20da%20P%C3%A9%20de%20Merengue%20e%20quero%20uma%20p%C3%A1gina%20assim%20para%20minha%20confeitaria%20%28produto%3A%20Laranja%20com%20Calda%29." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.6 2 2.17 6.43 2.17 11.87c0 1.74.46 3.44 1.32 4.94L2.08 22l5.32-1.4a9.86 9.86 0 0 0 4.63 1.18h.01c5.44 0 9.87-4.43 9.87-9.87 0-2.64-1.03-5.12-2.86-7Zm-7.01 15.2h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.16.83.84-3.08-.2-.32a8.17 8.17 0 0 1-1.26-4.34c0-4.52 3.68-8.2 8.21-8.2a8.2 8.2 0 0 1 8.2 8.21c0 4.52-3.68 8.2-8.2 8.2Zm4.5-6.15c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.13-.16.25-.64.8-.78.96-.15.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.15-1.18-.07-.1-.23-.17-.48-.29Z"/></svg>Pedir este</a>
+            </div>
+          </article>
+          <article class="card">
+            <img src="img/bolo-coco-gelado.webp" width="700" height="542" loading="lazy" alt="Fatia de bolo de coco gelado num prato com garfo">
+            <div class="card-txt">
+              <h3>Coco Gelado</h3>
+              <p>Massa branca molhadinha no leite de coco, com coco fresco ralado.</p>
+              <ul class="tam"><li><span>forma de 20 cm</span><b>R$ 64</b></li></ul>
+              <a class="pedir" href="https://wa.me/5531975732760?text=Oi%2C%20Lucas%21%20Vi%20o%20exemplo%20da%20P%C3%A9%20de%20Merengue%20e%20quero%20uma%20p%C3%A1gina%20assim%20para%20minha%20confeitaria%20%28produto%3A%20Coco%20Gelado%29." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.6 2 2.17 6.43 2.17 11.87c0 1.74.46 3.44 1.32 4.94L2.08 22l5.32-1.4a9.86 9.86 0 0 0 4.63 1.18h.01c5.44 0 9.87-4.43 9.87-9.87 0-2.64-1.03-5.12-2.86-7Zm-7.01 15.2h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.16.83.84-3.08-.2-.32a8.17 8.17 0 0 1-1.26-4.34c0-4.52 3.68-8.2 8.21-8.2a8.2 8.2 0 0 1 8.2 8.21c0 4.52-3.68 8.2-8.2 8.2Zm4.5-6.15c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.13-.16.25-.64.8-.78.96-.15.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.15-1.18-.07-.1-.23-.17-.48-.29Z"/></svg>Pedir este</a>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <section class="encomendar" id="como" aria-labelledby="t-como">
+    <div class="wrap">
+      <h2 id="t-como">Como encomendar</h2>
+      <ol class="adesivos">
+        <li><span class="n" aria-hidden="true">1</span><b>Escolha o bolo</b><span>Veja o tamanho que serve a sua festa.</span></li>
+        <li><span class="n" aria-hidden="true">2</span><b>Toque em “Pedir este”</b><span>O WhatsApp abre com o pedido escrito.</span></li>
+        <li><span class="n" aria-hidden="true">3</span><b>Combine os detalhes</b><span>Data, horário, vela, plaquinha com nome.</span></li>
+        <li><span class="n" aria-hidden="true">4</span><b>Retire ou receba</b><span>Retirada no ateliê ou entrega combinada.</span></li>
+      </ol>
+      <p class="cta"><a class="btn" href="https://wa.me/5531975732760?text=Oi%2C%20Lucas%21%20Vi%20o%20exemplo%20da%20P%C3%A9%20de%20Merengue%20e%20quero%20uma%20p%C3%A1gina%20assim%20para%20minha%20confeitaria." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.6 2 2.17 6.43 2.17 11.87c0 1.74.46 3.44 1.32 4.94L2.08 22l5.32-1.4a9.86 9.86 0 0 0 4.63 1.18h.01c5.44 0 9.87-4.43 9.87-9.87 0-2.64-1.03-5.12-2.86-7Zm-7.01 15.2h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.16.83.84-3.08-.2-.32a8.17 8.17 0 0 1-1.26-4.34c0-4.52 3.68-8.2 8.21-8.2a8.2 8.2 0 0 1 8.2 8.21c0 4.52-3.68 8.2-8.2 8.2Zm4.5-6.15c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.13-.16.25-.64.8-.78.96-.15.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.15-1.18-.07-.1-.23-.17-.48-.29Z"/></svg>Fazer minha encomenda</a></p>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape">
+  <div class="wrap">
+    <svg class="logo" viewBox="0 0 250 64" role="img" aria-label="Pé de Merengue, bolos e tortas">
+  <path d="M30 6c3 6-2 8 2 12 4 4 9 3 9 9 0 4-3 6-3 6 5 1 8 4 8 9 0 6-6 9-16 9s-16-3-16-9c0-5 3-8 8-9 0 0-3-2-3-6 0-6 5-6 8-10 3-4 1-7 3-11z" fill="#F7E3B8" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+  <path d="M22 33c4 2 12 2 16 0M20 42c6 3 18 3 24 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  <path d="M14 55h32" stroke="#B5576B" stroke-width="3" stroke-linecap="round"/>
+  <text x="58" y="37" textLength="186" lengthAdjust="spacingAndGlyphs" font-family="Young Serif, Georgia, serif" font-size="24" fill="currentColor">Pé de Merengue</text>
+  <text x="59" y="54" textLength="184" lengthAdjust="spacingAndGlyphs" font-family="Outfit, Arial, sans-serif" font-size="11" font-weight="600" fill="#B5576B">bolos &amp; tortas sob encomenda</text>
+</svg>
+    <p class="exemplo">Página de exemplo. Valores e produtos ilustrativos. Fotos: Unsplash.</p>
+    <p class="exemplo">Criada por <a href="https://confeitaria.lucasmartinsmkt.com.br/">Lucas Martins | Landing Pages</a></p>
+  </div>
+</footer>
+
+<a class="flutuante" href="https://wa.me/5531975732760?text=Oi%2C%20Lucas%21%20Vi%20o%20exemplo%20da%20P%C3%A9%20de%20Merengue%20e%20quero%20uma%20p%C3%A1gina%20assim%20para%20minha%20confeitaria." target="_blank" rel="noopener" aria-label="Encomendar pelo WhatsApp"><svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.6 2 2.17 6.43 2.17 11.87c0 1.74.46 3.44 1.32 4.94L2.08 22l5.32-1.4a9.86 9.86 0 0 0 4.63 1.18h.01c5.44 0 9.87-4.43 9.87-9.87 0-2.64-1.03-5.12-2.86-7Zm-7.01 15.2h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.16.83.84-3.08-.2-.32a8.17 8.17 0 0 1-1.26-4.34c0-4.52 3.68-8.2 8.21-8.2a8.2 8.2 0 0 1 8.2 8.21c0 4.52-3.68 8.2-8.2 8.2Zm4.5-6.15c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.13-.16.25-.64.8-.78.96-.15.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.15-1.18-.07-.1-.23-.17-.48-.29Z"/></svg></a>
+
+<script>
+  // Filtro do cardápio (sem JavaScript, tudo aparece normalmente)
+  (function () {
+    var chips = document.querySelectorAll('.chip');
+    var blocos = document.querySelectorAll('.bloco');
+    chips.forEach(function (c) {
+      c.addEventListener('click', function () {
+        var f = c.getAttribute('data-f');
+        chips.forEach(function (x) { var on = x === c; x.classList.toggle('ativo', on); x.setAttribute('aria-pressed', on); });
+        blocos.forEach(function (b) { b.hidden = !(f === 'todos' || b.getAttribute('data-cat') === f); });
+      });
+    });
+    var f = document.querySelector('.flutuante');
+    function v() { f.classList.toggle('oculto', window.scrollY < window.innerHeight * 0.7); }
+    window.addEventListener('scroll', v, { passive: true }); v();
+    window.__exemploOk = true;
+  })();
+</script>
+</body>
+</html>
