@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+# teste de deploy automatico
