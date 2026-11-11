@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Casa Vellut · Panetones e presentes de Natal (página de exemplo)</title>
+<meta name="description" content="Página de exemplo criada por Lucas Martins: cardápio de Natal com panetones, chocotones, trufas e caixas de presente, com pedido direto no WhatsApp.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#2A0A12">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232A0A12'/%3E%3Ccircle cx='32' cy='32' r='22' fill='none' stroke='%23D9C08A' stroke-width='2'/%3E%3Ctext x='32' y='41' text-anchor='middle' font-family='Georgia,serif' font-style='italic' font-size='22' fill='%23F3E7D3'%3ECV%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/capa-panetone.webp">
+<style>
+  :root {
+    --vinho: #2A0A12; --vinho-2: #3A0F1B; --bordo: #5A1726;
+    --champanhe: #F0E2C4; --ouro: #D9C08A; --ouro-escuro: #A88A4E;
+    --texto: #F6EEE3; --suave: #D7C4BA;
+    --linha: rgba(217,192,138,.28);
+    --titulo: "Cormorant Garamond", Georgia, serif; --corpo: "Karla", system-ui, sans-serif;
+  }
+  *,*::before,*::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--vinho); color: var(--texto); font: 400 1.0625rem/1.65 var(--corpo); overflow-x: clip; -webkit-font-smoothing: antialiased; }
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: inherit; }
+  h1,h2,h3 { font-family: var(--titulo); font-weight: 600; margin: 0; line-height: 1.05; text-wrap: balance; }
+  p { margin: 0; }
+  :focus-visible { outline: 2px solid var(--ouro); outline-offset: 3px; border-radius: 4px; }
+  .wrap { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+  @media (min-width: 768px) { .wrap { padding: 0 40px; } }
+
+  .aviso { background: #1B060B; color: var(--suave); font-size: .8125rem; text-align: center; padding: 8px 16px; border-bottom: 1px solid var(--linha); }
+  .aviso a { color: var(--ouro); font-weight: 700; }
+
+  .topo { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 0; }
+  .logo { width: 190px; height: auto; color: var(--champanhe); }
+  .topo-link { display: none; min-height: 48px; align-items: center; font-size: .9375rem; text-decoration: none; border-bottom: 1px solid var(--ouro); padding-bottom: 2px; }
+  @media (min-width: 720px) { .topo-link { display: inline-flex; } }
+
+  /* Capa: foto inteira com o texto por cima, embaixo */
+  .capa { position: relative; min-height: min(88vh, 760px); display: flex; align-items: flex-end; overflow: hidden; border-radius: 0 0 28px 28px; }
+  .capa img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
+  .capa::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(42,10,18,.15) 0%, rgba(42,10,18,.2) 35%, rgba(42,10,18,.92) 78%, var(--vinho) 100%); }
+  .capa-txt { position: relative; z-index: 1; padding: 0 0 44px; }
+  .capa .selo { display: inline-flex; align-items: center; gap: 10px; color: var(--ouro); font-size: .875rem; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 16px; }
+  .capa .selo::before, .capa .selo::after { content: ""; width: 26px; height: 1px; background: var(--ouro); }
+  .capa h1 { font-size: clamp(2.9rem, 12vw, 6rem); font-weight: 500; letter-spacing: -.01em; }
+  .capa h1 em { display: block; font-style: italic; color: var(--champanhe); }
+  .capa p { max-width: 34ch; margin: 18px 0 26px; color: var(--suave); font-size: 1.0625rem; }
+  .capa-acoes { display: flex; flex-wrap: wrap; gap: 12px 22px; align-items: center; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 14px 26px; border-radius: 999px; background: var(--champanhe); color: var(--vinho); font-weight: 700; text-decoration: none; transition: background .2s, transform .2s; }
+  .btn:hover { background: #fff4dc; transform: translateY(-1px); }
+  .link-sub { min-height: 48px; display: inline-flex; align-items: center; text-decoration: none; border-bottom: 1px solid var(--ouro); }
+
+  .prazo-faixa { margin-top: 28px; display: grid; gap: 1px; background: var(--linha); border: 1px solid var(--linha); border-radius: 18px; overflow: hidden; }
+  @media (min-width: 720px) { .prazo-faixa { grid-template-columns: repeat(3, 1fr); } }
+  .prazo-faixa div { background: var(--vinho-2); padding: 18px 20px; }
+  .prazo-faixa small { display: block; color: var(--ouro); font-size: .8125rem; letter-spacing: .08em; text-transform: uppercase; }
+  .prazo-faixa b { font-family: var(--titulo); font-size: 1.5rem; font-weight: 600; }
+
+  .menu-cat { position: sticky; top: 0; z-index: 20; background: rgba(42,10,18,.92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--linha); margin-top: 48px; }
+  .menu-cat ul { list-style: none; margin: 0; padding: 0 20px; display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; max-width: 1180px; margin: 0 auto; }
+  .menu-cat a { display: inline-flex; align-items: center; min-height: 52px; padding: 0 14px; white-space: nowrap; text-decoration: none; font-size: .9375rem; color: var(--suave); }
+  .menu-cat a:hover { color: var(--champanhe); }
+
+  .categoria { padding: 64px 0 8px; scroll-margin-top: 60px; }
+  .cat-cabeca { text-align: center; max-width: 560px; margin: 0 auto 36px; }
+  .ornamento { display: block; width: 120px; height: 14px; margin: 0 auto 14px; background:
+      linear-gradient(var(--ouro),var(--ouro)) left 50% / 46px 1px no-repeat,
+      linear-gradient(var(--ouro),var(--ouro)) right 50% / 46px 1px no-repeat,
+      radial-gradient(circle, var(--ouro) 0 3px, transparent 3.5px) center / 14px 14px no-repeat; }
+  .cat-cabeca h2 { font-size: clamp(2.2rem, 7vw, 3.4rem); font-weight: 500; }
+  .cat-cabeca p { color: var(--suave); margin-top: 10px; }
+
+  .grade { display: grid; gap: 22px; }
+  @media (min-width: 640px) { .grade { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1000px) { .grade { grid-template-columns: repeat(3, 1fr); gap: 28px; } }
+  .produto { background: var(--vinho-2); border: 1px solid var(--linha); border-radius: 22px; overflow: hidden; display: flex; flex-direction: column; }
+  .produto figure { margin: 0; aspect-ratio: 16 / 11; overflow: hidden; }
+  @media (min-width: 640px) { .produto figure { aspect-ratio: 4 / 3.4; } }
+  .produto figure img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+  .produto:hover figure img { transform: scale(1.03); }
+  .produto-txt { padding: 22px 22px 24px; display: flex; flex-direction: column; flex: 1; }
+  .produto h3 { font-size: 1.75rem; font-weight: 600; }
+  .produto p { color: var(--suave); margin: 8px 0 16px; font-size: 1rem; }
+  .precos { list-style: none; margin: auto 0 18px; padding: 0; border-top: 1px solid var(--linha); }
+  .precos li { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 10px 0; border-bottom: 1px dotted var(--linha); }
+  .precos span { color: var(--suave); font-size: .9375rem; }
+  .precos b { font-family: var(--titulo); font-size: 1.5rem; font-weight: 600; color: var(--champanhe); }
+  .btn-pedir { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 50px; padding: 12px 20px; border-radius: 999px; border: 1px solid var(--ouro); color: var(--champanhe); text-decoration: none; font-weight: 700; transition: background .2s, color .2s; }
+  .btn-pedir:hover { background: var(--champanhe); color: var(--vinho); }
+
+  /* Caixas de presente: foto grande + lista */
+  .presentes { margin-top: 72px; background: linear-gradient(160deg, var(--bordo), var(--vinho-2)); border-top: 1px solid var(--linha); border-bottom: 1px solid var(--linha); scroll-margin-top: 60px; }
+  .presentes .wrap { display: grid; gap: 32px; padding-top: 56px; padding-bottom: 56px; }
+  @media (min-width: 900px) { .presentes .wrap { grid-template-columns: .9fr 1.1fr; align-items: center; gap: 56px; } }
+  .presentes figure { margin: 0; border-radius: 200px 200px 22px 22px; overflow: hidden; border: 1px solid var(--linha); aspect-ratio: 4 / 4.6; }
+  .presentes figure img { width: 100%; height: 100%; object-fit: cover; }
+  .presentes h2 { font-size: clamp(2.3rem, 7vw, 3.6rem); font-weight: 500; }
+  .presentes h2 em { font-style: italic; color: var(--ouro); }
+  .presentes > .wrap > div > p { color: var(--suave); margin: 14px 0 26px; max-width: 46ch; }
+  .caixas { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+  .caixas li { border: 1px solid var(--linha); border-radius: 18px; padding: 20px; background: rgba(42,10,18,.45); display: grid; gap: 16px; }
+  @media (min-width: 560px) { .caixas li { grid-template-columns: 1fr auto; align-items: center; } }
+  .caixas h3 { font-size: 1.6rem; }
+  .caixas p { color: var(--suave); margin-top: 4px; font-size: 1rem; }
+  .caixa-acao { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .caixa-acao b { font-family: var(--titulo); font-size: 1.7rem; color: var(--champanhe); }
+
+  /* Como encomendar */
+  .como { padding-top: 72px; padding-bottom: 72px; }
+  .como h2 { text-align: center; font-size: clamp(2.2rem, 7vw, 3.4rem); font-weight: 500; margin-bottom: 36px; }
+  .passos { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; counter-reset: p; }
+  @media (min-width: 860px) { .passos { grid-template-columns: repeat(4, 1fr); } }
+  .passos li { counter-increment: p; position: relative; padding: 22px 20px 22px 74px; border: 1px solid var(--linha); border-radius: 18px; }
+  @media (min-width: 860px) { .passos li { padding: 72px 22px 24px; } }
+  .passos li::before { content: counter(p); position: absolute; left: 20px; top: 20px; width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--ouro); display: grid; place-items: center; font-family: var(--titulo); font-size: 1.3rem; color: var(--ouro); }
+  .passos b { display: block; font-family: var(--titulo); font-size: 1.45rem; font-weight: 600; }
+  .passos span { color: var(--suave); font-size: 1rem; }
+  .retirada { margin-top: 22px; text-align: center; color: var(--suave); }
+  .retirada b { color: var(--champanhe); }
+
+  .rodape { border-top: 1px solid var(--linha); padding: 36px 0 110px; text-align: center; color: var(--suave); font-size: .9375rem; }
+  .rodape .logo { margin: 0 auto 14px; width: 170px; }
+  .rodape p + p { margin-top: 8px; }
+  .rodape .exemplo { font-size: .8125rem; opacity: .9; }
+
+  .flutuante { position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); z-index: 30; display: inline-flex; align-items: center; gap: 8px; min-height: 54px; padding: 0 20px; border-radius: 999px; background: var(--champanhe); color: var(--vinho); font-weight: 700; text-decoration: none; box-shadow: 0 12px 30px -10px rgba(0,0,0,.7); transition: opacity .3s, transform .3s; }
+  .flutuante.oculto { opacity: 0; transform: translateY(16px); pointer-events: none; }
+
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<p class="aviso">Página de exemplo criada por Lucas Martins. <a href="https://confeitaria.lucasmartinsmkt.com.br/">Quero uma assim</a></p>
+
+<header class="wrap topo">
+  <a href="#inicio" aria-label="Casa Vellut, início" style="text-decoration:none"><svg class="logo" viewBox="0 0 220 64" role="img" aria-label="Casa Vellut, doces de Natal">
+  <g fill="none" stroke="currentColor" stroke-width="1.2">
+    <circle cx="32" cy="32" r="27"/><circle cx="32" cy="32" r="23" stroke-dasharray="1.5 3"/>
+  </g>
+  <text x="32" y="40.5" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-style="italic" font-weight="600" font-size="24" fill="currentColor">CV</text>
+  <path d="M32 6.5l1.2 2.6 2.8.3-2.1 1.9.6 2.8-2.5-1.4-2.5 1.4.6-2.8-2.1-1.9 2.8-.3z" fill="currentColor"/>
+  <text x="72" y="34" textLength="140" lengthAdjust="spacingAndGlyphs" font-family="Cormorant Garamond, Georgia, serif" font-weight="600" font-size="27" fill="currentColor">Casa Vellut</text>
+  <text x="73" y="51" textLength="138" lengthAdjust="spacingAndGlyphs" font-family="Karla, Arial, sans-serif" font-size="9.5" fill="currentColor" opacity=".85">DOCES DE NATAL</text>
+</svg></a>
+  <a class="topo-link" href="#presentes">Caixas de presente</a>
+</header>
+
+<main id="inicio">
+  <section class="wrap" aria-labelledby="titulo">
+    <div class="capa">
+      <img src="img/capa-panetone.webp" width="1200" height="1500" fetchpriority="high" alt="Panetone artesanal polvilhado com açúcar sobre fundo escuro">
+      <div class="capa-txt wrap" style="padding-left:24px;padding-right:24px">
+        <p class="selo">Natal 2026</p>
+        <h1 id="titulo">Panetones que chegam <em>como presente.</em></h1>
+        <p>Fermentação natural, recheios generosos e caixas montadas à mão para a sua ceia e para quem você ama.</p>
+        <div class="capa-acoes">
+          <a class="btn" href="https://wa.me/5531975732760?text=Oi%2C%20Lucas%21%20Vi%20o%20exemplo%20da%20Casa%20Vellut%20e%20quero%20uma%20p%C3%A1gina%20assim%20para%20minha%20confeitaria." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.6 2 2.17 6.43 2.17 11.87c0 1.74.46 3.44 1.32 4.94L2.08 22l5.32-1.4a9.86 9.86 0 0 0 4.63 1.18h.01c5.44 0 9.87-4.43 9.87-9.87 0-2.64-1.03-5.12-2.86-7Zm-7.01 15.2h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.16.83.84-3.08-.2-.32a8.17 8.17 0 0 1-1.26-4.34c0-4.52 3.68-8.2 8.21-8.2a8.2 8.2 0 0 1 8.2 8.21c0 4.52-3.68 8.2-8.2 8.2Zm4.5-6.15c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.13-.16.25-.64.8-.78.96-.15.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.15-1.18-.07-.1-.23-.17-.48-.29Z"/></svg>Encomendar no WhatsApp</a>
+          <a class="link-sub" href="#panetones">Ver o cardápio</a>
+        </div>
+      </div>
+    </div>
+    <div class="prazo-faixa" role="list">
+      <div role="listitem"><small>Encomendas até</small><b>18 de dezembro</b></div>
+      <div role="listitem"><small>Retiradas</small><b>20 a 24 de dezembro</b></div>
+      <div role="listitem"><small>Produção</small><b>Limitada por fornada</b></div>
+    </div>
+  </section>
+
+  <nav class="menu-cat" aria-label="Categorias do cardápio">
+    <ul>
+      <li><a href="#panetones">Panetones</a></li>
+      <li><a href="#trufas">Trufas e bombons</a></li>
+      <li><a href="#mesa">Mesa da ceia</a></li>
+      <li><a href="#presentes">Caixas de presente</a></li>
+      <li><a href="#como">Como encomendar</a></li>
+    </ul>
+  </nav>
+
+  <div class="wrap">
+    <section class="categoria" id="panetones" aria-labelledby="t-panetones">
+      <header class="cat-cabeca">
+        <span class="ornamento" aria-hidden="true"></span>
+        <h2 id="t-panetones">Panetones e chocotones</h2>
+        <p>Fermentação natural de 36 horas, massa amanteigada e muito recheio.</p>
+      </header>
+      <div class="grade">
+        <article class="produto">
+          <figure><img src="img/panetone-frutas.webp" width="700" height="700" loading="lazy" alt="Panetone de frutas fatiado, com miolo amarelo e passas"></figure>
+          <div class="produto-txt">
+            <h3>Panetone Clássico de Frutas</h3>
+            <p>Frutas cristalizadas, uvas-passas maceradas no rum e raspas de laranja-baía.</p>
+            <ul class="precos"><li><span>500 g</span><b>R$ 79</b></li><li><span>1 kg</span><b>R$ 139</b></li></ul>
+            <a class="btn-pedir" href="https://wa.me/5531975732760?text=Oi%2C%20Lucas%21%20Vi%20o%20exemplo%20da%20Casa%20Vellut%20e%20quero%20uma%20p%C3%A1gina%20assim%20para%20minha%20confeitaria%20%28produto%3A%20Panetone%20Cl%C3%A1ssico%20de%20Frutas%29." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.6 2 2.17 6.43 2.17 11.87c0 1.74.46 3.44 1.32 4.94L2.08 22l5.32-1.4a9.86 9.86 0 0 0 4.63 1.18h.01c5.44 0 9.87-4.43 9.87-9.87 0-2.64-1.03-5.12-2.86-7Zm-7.01 15.2h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.16.83.84-3.08-.2-.32a8.17 8.17 0 0 1-1.26-4.34c0-4.52 3.68-8.2 8.21-8.2a8.2 8.2 0 0 1 8.2 8.21c0 4.52-3.68 8.2-8.2 8.2Zm4.5-6.15c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.13-.16.25-.64.8-.78.96-.15.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.15-1.18-.07-.1-.23-.17-.48-.29Z"/></svg>Pedir este</a>
+          </div>
+        </article>
+        <article class="produto">
+          <figure><img src="img/chocotone-gotas.webp" width="700" height="482" loading="lazy" alt="Chocotone partido ao meio mostrando as gotas de chocolate"></figure>
+          <div class="produto-txt">
+            <h3>Chocotone de Gotas</h3>
+            <p>Massa de baunilha com gotas de chocolate meio amargo 54% em cada fatia.</p>
+            <ul class="precos"><li><span>500 g</span><b>R$ 84</b></li><li><span>1 kg</span><b>R$ 149</b></li></ul>
+            <a class="btn-pedir" href="https://wa.me/5531975732760?text=Oi%2C%20Lucas%21%20Vi%20o%20exemplo%20da%20Casa%20Vellut%20e%20quero%20uma%20p%C3%A1gina%20assim%20para%20minha%20confeitaria%20%28produto%3A%20Chocotone%20de%20Gotas%29." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.6 2 2.17 6.43 2.17 11.87c0 1.74.46 3.44 1.32 4.94L2.08 22l5.32-1.4a9.86 9.86 0 0 0 4.63 1.18h.01c5.44 0 9.87-4.43 9.87-9.87 0-2.64-1.03-5.12-2.86-7Zm-7.01 15.2h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.16.83.84-3.08-.2-.32a8.17 8.17 0 0 1-1.26-4.34c0-4.52 3.68-8.2 8.21-8.2a8.2 8.2 0 0 1 8.2 8.21c0 4.52-3.68 8.2-8.2 8.2Zm4.5-6.15c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.13-.16.25-.64.8-.78.96-.15.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.15-1.18-.07-.1-.23-.17-.48-.29Z"/></svg>Pedir este</a>
+          </div>
+        </article>
+        <article class="produto">
+          <figure><img src="img/panetone-amendoas.webp" width="700" height="488" loading="lazy" alt="Panetone com cobertura de glacê de amêndoas e açúcar"></figure>
+          <div class="produto-txt">
+            <h3>Panetone de Amêndoas Glaceado</h3>
+            <p>Casca crocante de glacê de amêndoas, açúcar perolado e laranja confitada no miolo.</p>
+            <ul class="precos"><li><span>750 g</span><b>R$ 119</b></li></ul>
+            <a class="btn-pedir" href="https://wa.me/5531975732760?text=Oi%2C%20Lucas%21%20Vi%20o%20exemplo%20da%20Casa%20Vellut%20e%20quero%20uma%20p%C3%A1gina%20assim%20para%20minha%20confeitaria%20%28produto%3A%20Panetone%20de%20Am%C3%AAndoas%20Glaceado%29." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.6 2 2.17 6.43 2.17 11.87c0 1.74.46 3.44 1.32 4.94L2.08 22l5.32-1.4a9.86 9.86 0 0 0 4.63 1.18h.01c5.44 0 9.87-4.43 9.87-9.87 0-2.64-1.03-5.12-2.86-7Zm-7.01 15.2h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.16.83.84-3.08-.2-.32a8.17 8.17 0 0 1-1.26-4.34c0-4.52 3.68-8.2 8.21-8.2a8.2 8.2 0 0 1 8.2 8.21c0 4.52-3.68 8.2-8.2 8.2Zm4.5-6.15c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.13-.16.25-.64.8-.78.96-.15.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.15-1.18-.07-.1-.23-.17-.48-.29Z"/></svg>Pedir este</a>
+          </div>
+        </article>
+        <article class="produto">
+          <figure><img src="img/chocotone-trufado.webp" width="700" height="1050" loading="lazy" alt="Chocotone coberto de ganache e granulado, com uma cereja no topo"></figure>
+          <div class="produto-txt">
+            <h3>Chocotone Trufado</h3>
+            <p>Recheio de trufa ao leite, cobertura de ganache, granulado de chocolate e cereja em calda.</p>
+            <ul class="precos"><li><span>700 g</span><b>R$ 129</b></li></ul>
+            <a class="btn-pedir" href="https://wa.me/5531975732760?text=Oi%2C%20Lucas%21%20Vi%20o%20exemplo%20da%20Casa%20Vellut%20e%20quero%20uma%20p%C3%A1gina%20assim%20para%20minha%20confeitaria%20%28produto%3A%20Chocotone%20Trufado%29." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.6 2 2.17 6.43 2.17 11.87c0 1.74.46 3.44 1.32 4.94L2.08 22l5.32-1.4a9.86 9.86 0 0 0 4.63 1.18h.01c5.44 0 9.87-4.43 9.87-9.87 0-2.64-1.03-5.12-2.86-7Zm-7.01 15.2h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.16.83.84-3.08-.2-.32a8.17 8.17 0 0 1-1.26-4.34c0-4.52 3.68-8.2 8.21-8.2a8.2 8.2 0 0 1 8.2 8.21c0 4.52-3.68 8.2-8.2 8.2Zm4.5-6.15c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.13-.16.25-.64.8-.78.96-.15.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.15-1.18-.07-.1-.23-.17-.48-.29Z"/></svg>Pedir este</a>
+          </div>
+        </article>
+        <article class="produto">
+          <figure><img src="img/panetone-doce-de-leite.webp" width="700" height="1050" loading="lazy" alt="Panetone com calda de chocolate escorrendo e cerejas ao lado"></figure>
+          <div class="produto-txt">
+            <h3>Panetone de Doce de Leite</h3>
+            <p>Recheio cremoso de doce de leite e calda de chocolate escorrendo pelas bordas.</p>
+            <ul class="precos"><li><span>700 g</span><b>R$ 124</b></li></ul>
+            <a class="btn-pedir" href="https://wa.me/5531975732760?text=Oi%2C%20Lucas%21%20Vi%20o%20exemplo%20da%20Casa%20Vellut%20e%20quero%20uma%20p%C3%A1gina%20assim%20para%20minha%20confeitaria%20%28produto%3A%20Panetone%20de%20Doce%20de%20Leite%29." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.6 2 2.17 6.43 2.17 11.87c0 1.74.46 3.44 1.32 4.94L2.08 22l5.32-1.4a9.86 9.86 0 0 0 4.63 1.18h.01c5.44 0 9.87-4.43 9.87-9.87 0-2.64-1.03-5.12-2.86-7Zm-7.01 15.2h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.16.83.84-3.08-.2-.32a8.17 8.17 0 0 1-1.26-4.34c0-4.52 3.68-8.2 8.21-8.2a8.2 8.2 0 0 1 8.2 8.21c0 4.52-3.68 8.2-8.2 8.2Zm4.5-6.15c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.13-.16.25-.64.8-.78.96-.15.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.15-1.18-.07-.1-.23-.17-.48-.29Z"/></svg>Pedir este</a>
+          </div>
+        </article>
+        <article class="produto">
+          <figure><img src="img/mini-panetones.webp" width="700" height="700" loading="lazy" alt="Dois mini panetones e uma fatia sobre a mesa, com árvore de Natal ao fundo"></figure>
+          <div class="produto-txt">
+            <h3>Minis para Presentear</h3>
+            <p>Caixa com 4 minis de 100 g: frutas, gotas, doce de leite e trufado.</p>
+            <ul class="precos"><li><span>caixa com 4</span><b>R$ 96</b></li></ul>
+            <a class="btn-pedir" href="https://wa.me/5531975732760?text=Oi%2C%20Lucas%21%20Vi%20o%20exemplo%20da%20Casa%20Vellut%20e%20quero%20uma%20p%C3%A1gina%20assim%20para%20minha%20confeitaria%20%28produto%3A%20Minis%20para%20Presentear%29." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.6 2 2.17 6.43 2.17 11.87c0 1.74.46 3.44 1.32 4.94L2.08 22l5.32-1.4a9.86 9.86 0 0 0 4.63 1.18h.01c5.44 0 9.87-4.43 9.87-9.87 0-2.64-1.03-5.12-2.86-7Zm-7.01 15.2h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.16.83.84-3.08-.2-.32a8.17 8.17 0 0 1-1.26-4.34c0-4.52 3.68-8.2 8.21-8.2a8.2 8.2 0 0 1 8.2 8.21c0 4.52-3.68 8.2-8.2 8.2Zm4.5-6.15c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.13-.16.25-.64.8-.78.96-.15.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.15-1.18-.07-.1-.23-.17-.48-.29Z"/></svg>Pedir este</a>
+          </div>
+        </article>
+      </div>
+    </section>
+    <section class="categoria" id="trufas" aria-labelledby="t-trufas">
+      <header class="cat-cabeca">
+        <span class="ornamento" aria-hidden="true"></span>
+        <h2 id="t-trufas">Trufas e bombons</h2>
+        <p>Chocolate temperado à mão, em caixas prontas para dar de presente.</p>
+      </header>
+      <div class="grade">
+        <article class="produto">
+          <figure><img src="img/trufas-cacau.webp" width="700" height="432" loading="lazy" alt="Trufas de chocolate passadas no cacau em pó"></figure>
+          <div class="produto-txt">
+            <h3>Trufas de Cacau 70%</h3>
+            <p>Ganache de chocolate 70% enrolada à mão e passada no cacau em pó.</p>
+            <ul class="precos"><li><span>12 unidades</span><b>R$ 72</b></li></ul>
+            <a class="btn-pedir" href="https://wa.me/5531975732760?text=Oi%2C%20Lucas%21%20Vi%20o%20exemplo%20da%20Casa%20Vellut%20e%20quero%20uma%20p%C3%A1gina%20assim%20para%20minha%20confeitaria%20%28produto%3A%20Trufas%20de%20Cacau%2070%25%29." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.6 2 2.17 6.43 2.17 11.87c0 1.74.46 3.44 1.32 4.94L2.08 22l5.32-1.4a9.86 9.86 0 0 0 4.63 1.18h.01c5.44 0 9.87-4.43 9.87-9.87 0-2.64-1.03-5.12-2.86-7Zm-7.01 15.2h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.16.83.84-3.08-.2-.32a8.17 8.17 0 0 1-1.26-4.34c0-4.52 3.68-8.2 8.21-8.2a8.2 8.2 0 0 1 8.2 8.21c0 4.52-3.68 8.2-8.2 8.2Zm4.5-6.15c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.13-.16.25-.64.8-.78.96-.15.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.15-1.18-.07-.1-.23-.17-.48-.29Z"/></svg>Pedir este</a>
+          </div>
+        </article>
+        <article class="produto">
+          <figure><img src="img/trufas-sortidas.webp" width="700" height="1050" loading="lazy" alt="Tigela com trufas sortidas cobertas de cacau, coco e confeitos"></figure>
+          <div class="produto-txt">
+            <h3>Trufas Sortidas da Casa</h3>
+            <p>Pistache, framboesa, café e coco queimado, quatro de cada sabor.</p>
+            <ul class="precos"><li><span>16 unidades</span><b>R$ 98</b></li></ul>
+            <a class="btn-pedir" href="https://wa.me/5531975732760?text=Oi%2C%20Lucas%21%20Vi%20o%20exemplo%20da%20Casa%20Vellut%20e%20quero%20uma%20p%C3%A1gina%20assim%20para%20minha%20confeitaria%20%28produto%3A%20Trufas%20Sortidas%20da%20Casa%29." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.6 2 2.17 6.43 2.17 11.87c0 1.74.46 3.44 1.32 4.94L2.08 22l5.32-1.4a9.86 9.86 0 0 0 4.63 1.18h.01c5.44 0 9.87-4.43 9.87-9.87 0-2.64-1.03-5.12-2.86-7Zm-7.01 15.2h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.16.83.84-3.08-.2-.32a8.17 8.17 0 0 1-1.26-4.34c0-4.52 3.68-8.2 8.21-8.2a8.2 8.2 0 0 1 8.2 8.21c0 4.52-3.68 8.2-8.2 8.2Zm4.5-6.15c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.13-.16.25-.64.8-.78.96-.15.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.15-1.18-.07-.1-.23-.17-.48-.29Z"/></svg>Pedir este</a>
+          </div>
+        </article>
+        <article class="produto">
+          <figure><img src="img/caixa-bombons.webp" width="700" height="874" loading="lazy" alt="Caixa aberta com bombons de chocolate variados"></figure>
+          <div class="produto-txt">
+            <h3>Bombons Finos</h3>
+            <p>Casquinha de chocolate com caramelo salgado, maracujá e creme de avelã.</p>
+            <ul class="precos"><li><span>9 unidades</span><b>R$ 69</b></li></ul>
+            <a class="btn-pedir" href="https://wa.me/5531975732760?text=Oi%2C%20Lucas%21%20Vi%20o%20exemplo%20da%20Casa%20Vellut%20e%20quero%20uma%20p%C3%A1gina%20assim%20para%20minha%20confeitaria%20%28produto%3A%20Bombons%20Finos%29." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.6 2 2.17 6.43 2.17 11.87c0 1.74.46 3.44 1.32 4.94L2.08 22l5.32-1.4a9.86 9.86 0 0 0 4.63 1.18h.01c5.44 0 9.87-4.43 9.87-9.87 0-2.64-1.03-5.12-2.86-7Zm-7.01 15.2h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.16.83.84-3.08-.2-.32a8.17 8.17 0 0 1-1.26-4.34c0-4.52 3.68-8.2 8.21-8.2a8.2 8.2 0 0 1 8.2 8.21c0 4.52-3.68 8.2-8.2 8.2Zm4.5-6.15c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.13-.16.25-.64.8-.78.96-.15.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.15-1.18-.07-.1-.23-.17-.48-.29Z"/></svg>Pedir este</a>
+          </div>
+        </article>
+      </div>
+    </section>
+    <section class="categoria" id="mesa" aria-labelledby="t-mesa">
+      <header class="cat-cabeca">
+        <span class="ornamento" aria-hidden="true"></span>
+        <h2 id="t-mesa">Para a mesa da ceia</h2>
+        <p>Sobremesas inteiras para servir a família depois do jantar.</p>
+      </header>
+      <div class="grade">
+        <article class="produto">
+          <figure><img src="img/tronco-natal.webp" width="700" height="1050" loading="lazy" alt="Tronco de Natal de chocolate decorado com cogumelos de merengue"></figure>
+          <div class="produto-txt">
+            <h3>Tronco de Natal</h3>
+            <p>Rocambole de chocolate com creme de avelã, ganache texturizada e cogumelos de merengue.</p>
+            <ul class="precos"><li><span>serve 10</span><b>R$ 159</b></li></ul>
+            <a class="btn-pedir" href="https://wa.me/5531975732760?text=Oi%2C%20Lucas%21%20Vi%20o%20exemplo%20da%20Casa%20Vellut%20e%20quero%20uma%20p%C3%A1gina%20assim%20para%20minha%20confeitaria%20%28produto%3A%20Tronco%20de%20Natal%29." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.6 2 2.17 6.43 2.17 11.87c0 1.74.46 3.44 1.32 4.94L2.08 22l5.32-1.4a9.86 9.86 0 0 0 4.63 1.18h.01c5.44 0 9.87-4.43 9.87-9.87 0-2.64-1.03-5.12-2.86-7Zm-7.01 15.2h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.16.83.84-3.08-.2-.32a8.17 8.17 0 0 1-1.26-4.34c0-4.52 3.68-8.2 8.21-8.2a8.2 8.2 0 0 1 8.2 8.21c0 4.52-3.68 8.2-8.2 8.2Zm4.5-6.15c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.13-.16.25-.64.8-.78.96-.15.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.15-1.18-.07-.1-.23-.17-.48-.29Z"/></svg>Pedir este</a>
+          </div>
+        </article>
+        <article class="produto">
+          <figure><img src="img/torta-nozes.webp" width="700" height="466" loading="lazy" alt="Torta de nozes-pecã caramelizada com uma fatia sendo retirada"></figure>
+          <div class="produto-txt">
+            <h3>Torta de Nozes Caramelizada</h3>
+            <p>Massa amanteigada, caramelo de açúcar mascavo e nozes-pecã tostadas.</p>
+            <ul class="precos"><li><span>serve 10</span><b>R$ 134</b></li></ul>
+            <a class="btn-pedir" href="https://wa.me/5531975732760?text=Oi%2C%20Lucas%21%20Vi%20o%20exemplo%20da%20Casa%20Vellut%20e%20quero%20uma%20p%C3%A1gina%20assim%20para%20minha%20confeitaria%20%28produto%3A%20Torta%20de%20Nozes%20Caramelizada%29." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.6 2 2.17 6.43 2.17 11.87c0 1.74.46 3.44 1.32 4.94L2.08 22l5.32-1.4a9.86 9.86 0 0 0 4.63 1.18h.01c5.44 0 9.87-4.43 9.87-9.87 0-2.64-1.03-5.12-2.86-7Zm-7.01 15.2h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.16.83.84-3.08-.2-.32a8.17 8.17 0 0 1-1.26-4.34c0-4.52 3.68-8.2 8.21-8.2a8.2 8.2 0 0 1 8.2 8.21c0 4.52-3.68 8.2-8.2 8.2Zm4.5-6.15c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.13-.16.25-.64.8-.78.96-.15.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.15-1.18-.07-.1-.23-.17-.48-.29Z"/></svg>Pedir este</a>
+          </div>
+        </article>
+        <article class="produto">
+          <figure><img src="img/biscoitos-gengibre.webp" width="700" height="1025" loading="lazy" alt="Biscoitos de gengibre em formato de bonecos, casinhas e estrelas"></figure>
+          <div class="produto-txt">
+            <h3>Biscoitos de Gengibre</h3>
+            <p>Gengibre, canela e mel, decorados um a um com glacê real.</p>
+            <ul class="precos"><li><span>lata com 20</span><b>R$ 64</b></li></ul>
+            <a class="btn-pedir" href="https://wa.me/5531975732760?text=Oi%2C%20Lucas%21%20Vi%20o%20exemplo%20da%20Casa%20Vellut%20e%20quero%20uma%20p%C3%A1gina%20assim%20para%20minha%20confeitaria%20%28produto%3A%20Biscoitos%20de%20Gengibre%29." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.6 2 2.17 6.43 2.17 11.87c0 1.74.46 3.44 1.32 4.94L2.08 22l5.32-1.4a9.86 9.86 0 0 0 4.63 1.18h.01c5.44 0 9.87-4.43 9.87-9.87 0-2.64-1.03-5.12-2.86-7Zm-7.01 15.2h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.16.83.84-3.08-.2-.32a8.17 8.17 0 0 1-1.26-4.34c0-4.52 3.68-8.2 8.21-8.2a8.2 8.2 0 0 1 8.2 8.21c0 4.52-3.68 8.2-8.2 8.2Zm4.5-6.15c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.13-.16.25-.64.8-.78.96-.15.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.15-1.18-.07-.1-.23-.17-.48-.29Z"/></svg>Pedir este</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+
+  <section class="presentes" id="presentes" aria-labelledby="t-presentes">
+    <div class="wrap">
+      <figure><img src="img/caixa-presente.webp" width="1200" height="1625" loading="lazy" alt="Caixa de presente forrada com papel kraft, cheia de biscoitos e docinhos, com ramos de pinheiro"></figure>
+      <div>
+        <h2 id="t-presentes">Caixas de presente, <em>prontas para entregar.</em></h2>
+        <p>Montadas à mão no dia da retirada, com laço e cartão. É só escolher, escrever a mensagem e a gente cuida do resto.</p>
+        <ul class="caixas">
+          <li>
+            <div><h3>Caixa Noite Feliz</h3><p>1 mini panetone, 6 trufas sortidas, 6 biscoitos de gengibre e cartão escrito à mão.</p></div>
+            <div class="caixa-acao"><b>R$ 129</b><a class="btn-pedir" href="https://wa.me/5531975732760?text=Oi%2C%20Lucas%21%20Vi%20o%20exemplo%20da%20Casa%20Vellut%20e%20quero%20uma%20p%C3%A1gina%20assim%20para%20minha%20confeitaria%20%28produto%3A%20Caixa%20Noite%20Feliz%29." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.6 2 2.17 6.43 2.17 11.87c0 1.74.46 3.44 1.32 4.94L2.08 22l5.32-1.4a9.86 9.86 0 0 0 4.63 1.18h.01c5.44 0 9.87-4.43 9.87-9.87 0-2.64-1.03-5.12-2.86-7Zm-7.01 15.2h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.16.83.84-3.08-.2-.32a8.17 8.17 0 0 1-1.26-4.34c0-4.52 3.68-8.2 8.21-8.2a8.2 8.2 0 0 1 8.2 8.21c0 4.52-3.68 8.2-8.2 8.2Zm4.5-6.15c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.13-.16.25-.64.8-.78.96-.15.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.15-1.18-.07-.1-.23-.17-.48-.29Z"/></svg>Pedir esta</a></div>
+          </li>
+          <li>
+            <div><h3>Caixa Ceia Vellut</h3><p>Panetone de 500 g, 9 bombons finos, lata de biscoitos e laço de veludo.</p></div>
+            <div class="caixa-acao"><b>R$ 219</b><a class="btn-pedir" href="https://wa.me/5531975732760?text=Oi%2C%20Lucas%21%20Vi%20o%20exemplo%20da%20Casa%20Vellut%20e%20quero%20uma%20p%C3%A1gina%20assim%20para%20minha%20confeitaria%20%28produto%3A%20Caixa%20Ceia%20Vellut%29." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.6 2 2.17 6.43 2.17 11.87c0 1.74.46 3.44 1.32 4.94L2.08 22l5.32-1.4a9.86 9.86 0 0 0 4.63 1.18h.01c5.44 0 9.87-4.43 9.87-9.87 0-2.64-1.03-5.12-2.86-7Zm-7.01 15.2h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.16.83.84-3.08-.2-.32a8.17 8.17 0 0 1-1.26-4.34c0-4.52 3.68-8.2 8.21-8.2a8.2 8.2 0 0 1 8.2 8.21c0 4.52-3.68 8.2-8.2 8.2Zm4.5-6.15c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.13-.16.25-.64.8-.78.96-.15.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.15-1.18-.07-.1-.23-.17-.48-.29Z"/></svg>Pedir esta</a></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="como wrap" id="como" aria-labelledby="t-como">
+    <h2 id="t-como">Como encomendar</h2>
+    <ol class="passos">
+      <li><b>Escolha</b><span>Toque em “Pedir este” no doce que quiser.</span></li>
+      <li><b>Envie</b><span>O WhatsApp abre com o nome do produto já escrito.</span></li>
+      <li><b>Combine</b><span>Confirmamos tamanho, data de retirada e cartão.</span></li>
+      <li><b>Garanta</b><span>50% no Pix reserva sua encomenda; o restante, na retirada.</span></li>
+    </ol>
+    <p class="retirada">Encomendas até <b>18 de dezembro</b>. Retiradas de <b>20 a 24 de dezembro</b>.</p>
+  </section>
+</main>
+
+<footer class="rodape">
+  <div class="wrap">
+    <svg class="logo" viewBox="0 0 220 64" role="img" aria-label="Casa Vellut, doces de Natal">
+  <g fill="none" stroke="currentColor" stroke-width="1.2">
+    <circle cx="32" cy="32" r="27"/><circle cx="32" cy="32" r="23" stroke-dasharray="1.5 3"/>
+  </g>
+  <text x="32" y="40.5" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-style="italic" font-weight="600" font-size="24" fill="currentColor">CV</text>
+  <path d="M32 6.5l1.2 2.6 2.8.3-2.1 1.9.6 2.8-2.5-1.4-2.5 1.4.6-2.8-2.1-1.9 2.8-.3z" fill="currentColor"/>
+  <text x="72" y="34" textLength="140" lengthAdjust="spacingAndGlyphs" font-family="Cormorant Garamond, Georgia, serif" font-weight="600" font-size="27" fill="currentColor">Casa Vellut</text>
+  <text x="73" y="51" textLength="138" lengthAdjust="spacingAndGlyphs" font-family="Karla, Arial, sans-serif" font-size="9.5" fill="currentColor" opacity=".85">DOCES DE NATAL</text>
+</svg>
+    <p>Panetones, trufas e presentes de Natal.</p>
+    <p class="exemplo">Página de exemplo. Valores e produtos ilustrativos. Fotos: Unsplash.</p>
+    <p class="exemplo">Criada por <a href="https://confeitaria.lucasmartinsmkt.com.br/">Lucas Martins | Landing Pages</a></p>
+  </div>
+</footer>
+
+<a class="flutuante" href="https://wa.me/5531975732760?text=Oi%2C%20Lucas%21%20Vi%20o%20exemplo%20da%20Casa%20Vellut%20e%20quero%20uma%20p%C3%A1gina%20assim%20para%20minha%20confeitaria." target="_blank" rel="noopener" aria-label="Encomendar pelo WhatsApp"><svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.6 2 2.17 6.43 2.17 11.87c0 1.74.46 3.44 1.32 4.94L2.08 22l5.32-1.4a9.86 9.86 0 0 0 4.63 1.18h.01c5.44 0 9.87-4.43 9.87-9.87 0-2.64-1.03-5.12-2.86-7Zm-7.01 15.2h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.16.83.84-3.08-.2-.32a8.17 8.17 0 0 1-1.26-4.34c0-4.52 3.68-8.2 8.21-8.2a8.2 8.2 0 0 1 8.2 8.21c0 4.52-3.68 8.2-8.2 8.2Zm4.5-6.15c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.13-.16.25-.64.8-.78.96-.15.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.15-1.18-.07-.1-.23-.17-.48-.29Z"/></svg>Encomendar</a>
+<script>
+  // Botão flutuante aparece depois da capa
+  (function () {
+    var f = document.querySelector('.flutuante');
+    function v() { f.classList.toggle('oculto', window.scrollY < window.innerHeight * 0.7); }
+    window.addEventListener('scroll', v, { passive: true }); v();
+  })();
+</script>
+</body>
+</html>
